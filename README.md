@@ -96,7 +96,14 @@ DB_PASSWORD=your_password
 php artisan migrate
 ```
 
-### 5. Start development server
+6. **Set up public storage link**
+
+To make uploaded files (like avatars) publicly accessible:
+
+```bash
+php artisan storage:link
+
+### 7. Start development server
 ```bash
 php artisan serve
 ```
