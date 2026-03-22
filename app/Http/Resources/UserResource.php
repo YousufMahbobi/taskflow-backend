@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'name'       => $this->name,
             'email'      => $this->email,
             'job_title'  => $this->job_title,
-            'avatar'     => $$this->avatar ? Storage::url($this->avatar) : null,
+            'avatar'     => $this->avatar ? Storage::url($this->avatar) : null,
             'status'     => (bool) $this->status,
         ];
     }
