@@ -28,7 +28,7 @@ class UserController extends Controller
 
         return ApiResponse::success(
             message: 'Users fetched successfully',
-            data: UserResource::collection($users)->resolve(),
+            data: UserResource::collection($users),
             code: 'USERS_FETCHED',
             status: 200,
             meta: [

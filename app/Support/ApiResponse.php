@@ -3,6 +3,7 @@
 namespace App\Support;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 final class ApiResponse
 {
@@ -23,6 +24,13 @@ final class ApiResponse
         int $status = 200,
         array $meta = []
     ): JsonResponse {
+
+        if ($data instanceof JsonResource) {
+            $data = $data->resolve();
+        } elseif($data instanceof \Illuminate\Support\Collection) {
+            $data = $data->toArray();
+        }
+
         $response = [
             'success' => true,
             'message' => $message,
