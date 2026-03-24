@@ -43,4 +43,23 @@ class AuthController extends Controller
             code: 'LOGOUT_SUCCESS'
         );
     }
+
+    public function me(): JsonResponse
+    {
+        $user = $this->authService->user();
+
+        if (!$user) {
+            return ApiResponse::error(
+                message: 'User not authenticated',
+                code: 'UNAUTHENTICATED',
+                status: 401
+            );
+        }
+
+        return ApiResponse::success(
+            message: 'User retrieved successfully',
+            data: new UserResource($user),
+            code: 'USER_RETRIEVED'
+        );
+    }
 }
