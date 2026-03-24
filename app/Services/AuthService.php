@@ -16,7 +16,7 @@ class AuthService implements AuthServiceInterface
 
         $user = $this->user();
 
-        if (!$user || !$user->is_active) {
+        if (!$user || !$user->status) {
             $this->logout();
             return null;
         }
